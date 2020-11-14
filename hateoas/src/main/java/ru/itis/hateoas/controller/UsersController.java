@@ -11,8 +11,11 @@ import ru.itis.hateoas.service.UsersService;
 @RepositoryRestController
 public class UsersController {
 
+    private final UsersService usersService;
+
     @Autowired
     public UsersController(UsersService usersService) {
+        this.usersService = usersService;
     }
 
 }

@@ -7,8 +7,11 @@ import ru.itis.hateoas.service.CommentsService;
 @RepositoryRestController
 public class CommentsController {
 
+    private final CommentsService commentsService;
+
     @Autowired
     public CommentsController(CommentsService commentsService) {
+        this.commentsService = commentsService;
     }
 
 }

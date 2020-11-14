@@ -17,7 +17,7 @@ public class BlogUser extends AbstractEntity {
     private String firstName;
     private String secondName;
 
-    @OneToMany(mappedBy = "author")
+    @OneToMany(mappedBy = "author", fetch = FetchType.LAZY)
     private List<Post> posts;
 
     @OneToMany(mappedBy = "whom")
