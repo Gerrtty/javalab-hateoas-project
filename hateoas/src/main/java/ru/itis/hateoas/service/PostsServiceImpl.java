@@ -2,11 +2,8 @@ package ru.itis.hateoas.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import ru.itis.hateoas.model.BlogUser;
 import ru.itis.hateoas.model.Post;
 import ru.itis.hateoas.repository.PostsRepository;
-
-import java.util.List;
 
 @Service
 public class PostsServiceImpl implements PostsService {
@@ -23,14 +20,5 @@ public class PostsServiceImpl implements PostsService {
         return postsRepository.save(post);
     }
 
-    @Override
-    public void delete(Long id) {
-        postsRepository.delete(postsRepository.getOne(id));
-    }
-
-    @Override
-    public List<Post> getAllByUser(BlogUser blogUser) {
-        return blogUser.getPosts();
-    }
 
 }
