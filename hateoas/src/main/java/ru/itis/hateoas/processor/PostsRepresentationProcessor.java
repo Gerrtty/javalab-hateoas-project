@@ -17,7 +17,8 @@ public class PostsRepresentationProcessor implements RepresentationModelProcesso
         Post post = model.getContent();
 
         if (post != null) {
-            model.add(linkTo(methodOn(PostsController.class).publish(model)).withRel("/posts/"));
+            model.add(linkTo(methodOn(PostsController.class)
+                    .publish(model)).withRel("/posts/"));
         }
 
         return model;

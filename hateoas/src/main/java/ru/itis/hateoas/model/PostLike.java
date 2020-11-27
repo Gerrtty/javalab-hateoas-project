@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.itis.hateoas.interfaces.WithAuthorInt;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -16,7 +17,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-public class PostLike extends AbstractEntity {
+public class PostLike extends AbstractEntity implements WithAuthorInt {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "blog_user_id")

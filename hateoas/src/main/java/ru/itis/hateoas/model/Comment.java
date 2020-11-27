@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import ru.itis.hateoas.interfaces.WithAuthorInt;
 
 import javax.persistence.*;
 import java.util.List;
@@ -13,7 +14,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Comment extends AbstractEntity {
+public class Comment extends AbstractEntity implements WithAuthorInt {
 
     private String text;
 

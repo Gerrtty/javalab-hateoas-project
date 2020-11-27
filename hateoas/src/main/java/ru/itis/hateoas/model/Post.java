@@ -1,6 +1,7 @@
 package ru.itis.hateoas.model;
 
 import lombok.*;
+import ru.itis.hateoas.interfaces.WithAuthorInt;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Builder
 @Entity
-public class Post extends AbstractEntity {
+public class Post extends AbstractEntity implements WithAuthorInt {
 
     private String title;
     private String body;
