@@ -14,7 +14,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
 import ru.itis.hateoas.model.Comment;
 import ru.itis.hateoas.service.CommentsService;
-import ru.itis.hateoas.service.PostsService;
 
 import static org.mockito.Mockito.when;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;

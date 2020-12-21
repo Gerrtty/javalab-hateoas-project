@@ -4,6 +4,7 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import ru.itis.hateoas.dto.SignInDto;
@@ -33,6 +34,9 @@ public class SignInServiceImpl {
     public TokenDto signIn(SignInDto signInData) throws AccessDeniedException {
         Optional<BlogUser> optionalUser = usersRepository.findBlogUserByLogin(signInData.getEmail());
 
+        System.out.println(optionalUser.get().getLogin());
+        System.out.println(optionalUser.get().getPassword());
+
         if(optionalUser.isPresent()) {
 
             BlogUser user = optionalUser.get();
@@ -60,16 +64,39 @@ public class SignInServiceImpl {
         }
     }
 
-    public BlogUser signUp(SignUpDto signUpDto) {
+    public BlogUser signUp(EntityModel<BlogUser> model) {
 
-        BlogUser user = BlogUser.builder()
-                .login(signUpDto.getEmail())
-                .password(passwordEncoder.encode(signUpDto.getPassword()))
-                .build();
+        if (model.getContent() != null) {
 
-        user = usersRepository.save(user);
+            BlogUser user = model.getContent();
 
-        return user;
+            user = usersRepository.save(BlogUser.builder()
+                    .login(user.getLogin())
+                    .password(passwordEncoder.encode(user.getPassword()))
+                    .firstName(user.getFirstName())
+                    .secondName(user.getSecondName())
+                    .build());
+
+            return user;
+        }
+
+        else {
+            throw new IllegalArgumentException("null");
+        }
+
+    }
+
+    public BlogUser signUp(SignUpDto user) {
+
+
+        BlogUser u = usersRepository.save(BlogUser.builder()
+                .login(user.getEmail())
+                .password(passwordEncoder.encode(user.getPassword()))
+//                .firstName(user.getFirstName())
+//                .secondName(user.getSecondName())
+                .build());
+
+        return u;
 
     }
 

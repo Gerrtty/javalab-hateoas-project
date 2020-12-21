@@ -4,22 +4,24 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelProcessor;
 import org.springframework.stereotype.Component;
+import ru.itis.hateoas.controller.LikesController;
 import ru.itis.hateoas.controller.PostsController;
-import ru.itis.hateoas.model.Post;
+import ru.itis.hateoas.model.PostLike;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @Component
-public class PostsRepresentationProcessor implements RepresentationModelProcessor<EntityModel<Post>> {
+public class LikesRepresentationProcessor implements RepresentationModelProcessor<EntityModel<PostLike>> {
 
     @Override
-    public @NotNull EntityModel<Post> process(EntityModel<Post> model) {
-        Post post = model.getContent();
+    public @NotNull EntityModel<PostLike> process(EntityModel<PostLike> model) {
 
-        if (post != null) {
-            model.add(linkTo(methodOn(PostsController.class)
-                    .publish(model)).withRel("/posts/"));
+        PostLike like = model.getContent();
+
+        if (like != null) {
+            model.add(linkTo(methodOn(LikesController.class)
+                    .set(model)).withRel("/postLikes/"));
         }
 
         return model;

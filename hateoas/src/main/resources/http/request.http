@@ -3,16 +3,16 @@ POST http://localhost:9080/signIn
 Content-Type: application/json
 
 {
-  "email": "user1@gmail.com",
+  "email": "new@gmail.com",
   "password": "123"
 }
 
 ### Registration
-POST http://localhost:9080/signUp
+POST http://localhost:9080/blogUsers
 Content-Type: application/json
 
 {
-  "email" : "user1@gmail.com",
+  "login" : "new@gmail.com",
   "password": "123"
 }
 ###

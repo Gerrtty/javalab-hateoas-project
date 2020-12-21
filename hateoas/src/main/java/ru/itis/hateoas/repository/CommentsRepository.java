@@ -7,5 +7,4 @@ import ru.itis.hateoas.model.Comment;
 
 @RepositoryRestResource
 public interface CommentsRepository extends JpaRepository<Comment, Long> {
-
 }
