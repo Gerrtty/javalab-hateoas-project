@@ -6,10 +6,10 @@ import lombok.Setter;
 
 import javax.persistence.*;
 
-@Getter
-@Setter
 @MappedSuperclass
 @EqualsAndHashCode(of = "id")
+@Getter
+@Setter
 public abstract class AbstractEntity {
 
     @Id

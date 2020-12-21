@@ -1,0 +1,18 @@
+### Authorization
+POST http://localhost:9080/signIn
+Content-Type: application/json
+
+{
+  "email": "user1@gmail.com",
+  "password": "123"
+}
+
+### Registration
+POST http://localhost:9080/signUp
+Content-Type: application/json
+
+{
+  "email" : "user1@gmail.com",
+  "password": "123"
+}
+###

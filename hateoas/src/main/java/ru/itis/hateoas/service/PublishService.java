@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.itis.hateoas.interfaces.PublishInt;
 import ru.itis.hateoas.interfaces.WithAuthorInt;
+import ru.itis.hateoas.model.ErrorMessage;
 import ru.itis.hateoas.model.Post;
 
 @Service
@@ -19,7 +20,7 @@ public class PublishService<T> implements PublishInt<T> {
         } catch (AccessException e) {
             e.printStackTrace();
         }
-        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(model);
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(EntityModel.of(model));
     }
 
     public T save(T model, JpaRepository<T, Long> repository) throws AccessException {
