@@ -9,6 +9,7 @@ public class PostTestHelper {
                 .body("Test body")
                 .title("Test title")
                 .author(UserTestHelper.getUser(userIsConfirmed))
+                .likesCount(10L)
                 .build();
     }
 

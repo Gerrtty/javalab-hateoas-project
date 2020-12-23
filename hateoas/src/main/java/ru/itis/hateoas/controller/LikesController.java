@@ -1,6 +1,5 @@
 package ru.itis.hateoas.controller;
 
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.rest.webmvc.RepositoryRestController;
 import org.springframework.hateoas.EntityModel;
@@ -24,8 +23,9 @@ public class LikesController {
 
     @RequestMapping(value = "postLikes", method = RequestMethod.POST)
     public @ResponseBody
-    ResponseEntity<?> set(@NotNull @RequestBody EntityModel<PostLike> model) {
-         return ResponseEntity.ok(likesService.set(model.getContent()));
+    ResponseEntity<?> setLike(@RequestBody EntityModel<PostLike> model) {
+        PostLike postLike = likesService.set(model.getContent());
+        return ResponseEntity.ok(postLike);
     }
 
 }

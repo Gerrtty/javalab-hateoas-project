@@ -5,7 +5,6 @@ import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.server.RepresentationModelProcessor;
 import org.springframework.stereotype.Component;
 import ru.itis.hateoas.controller.LikesController;
-import ru.itis.hateoas.controller.PostsController;
 import ru.itis.hateoas.model.PostLike;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
@@ -21,7 +20,7 @@ public class LikesRepresentationProcessor implements RepresentationModelProcesso
 
         if (like != null) {
             model.add(linkTo(methodOn(LikesController.class)
-                    .set(model)).withRel("/postLikes/"));
+                    .setLike(model)).withRel("/postLikes/"));
         }
 
         return model;

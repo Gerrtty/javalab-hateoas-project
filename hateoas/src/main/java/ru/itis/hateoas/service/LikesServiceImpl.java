@@ -22,9 +22,12 @@ public class LikesServiceImpl implements LikesService {
     public PostLike set(PostLike postLike) {
 
         if (postLike != null) {
+
             Post post = postLike.getPost();
 
             Long likesCount = post.getLikesCount();
+
+            System.out.println(likesCount);
 
             if (likesCount == null) {
                 likesCount = 0L;
@@ -34,12 +37,14 @@ public class LikesServiceImpl implements LikesService {
 
             boolean likeIsExist = false;
 
-            for (PostLike like : likes) {
-                if (like.getAuthor().equals(postLike.getAuthor())) {
-                    post.setLikesCount(likesCount - 1);
-                    likesRepository.delete(like);
-                    likeIsExist = true;
-                    break;
+            if (likes != null) {
+                for (PostLike like : likes) {
+                    if (like.getAuthor().equals(postLike.getAuthor())) {
+                        post.setLikesCount(likesCount - 1);
+                        likesRepository.delete(like);
+                        likeIsExist = true;
+                        break;
+                    }
                 }
             }
 
@@ -48,14 +53,10 @@ public class LikesServiceImpl implements LikesService {
                 return likesRepository.save(postLike);
             }
 
-//            else {
-//                post.setLikesCount(likesCount - 1);
-//                likesRepository.delete(postLike);
-//            }
-
         }
 
-        return null;
+
+        return postLike;
 
     }
 }
