@@ -36,7 +36,7 @@ public class PostsTest {
     @Autowired
     private MockMvc mockMvc;
 
-    @MockBean
+    @Autowired
     private PublishService<Post> postPublishService;
 
     @Autowired
@@ -45,7 +45,7 @@ public class PostsTest {
     @MockBean
     private PostsRepository postsRepository;
 
-    @MockBean
+    @Autowired
     private PostsService postsService;
 
     @Test

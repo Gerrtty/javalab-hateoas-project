@@ -1,6 +1,9 @@
 package ru.itis.hateoas;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import ru.itis.hateoas.model.TestModel;
+import ru.itis.hateoas.repository.TestRepo;
 import ru.itis.hateoas.service.TestService;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -17,12 +20,20 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 public class TestServiceTest {
 
-    @MockBean
+    @Autowired
     public TestService testService;
+
+    @MockBean
+    public TestRepo testRepo;
 
     @BeforeEach
     public void before() {
-        when(testService.testMethod("kek")).thenReturn("lol");
+
+        TestModel testModel = TestModel.builder()
+                .text("kek")
+                .build();
+
+        when(testRepo.save(testModel)).thenReturn(testModel);
     }
 
     @Test
